@@ -1,7 +1,6 @@
 package com.apps.rightmeow.apptality.model;
 
 import com.apps.rightmeow.apptality.AppTalityApp;
-import io.realm.annotations.PrimaryKey;
 import java.util.List;
 
 /**
@@ -12,7 +11,6 @@ public class Roster{
   public List<Characters> characters;
 
   public static class Characters{
-    @PrimaryKey
     public String name;
     public Fatality[] fatalities;
 

@@ -2,9 +2,10 @@ package com.apps.rightmeow.apptality.view;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -22,7 +23,7 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-public class MainActivity extends ActionBarActivity implements Callback<Roster> {
+public class MainActivity extends AppCompatActivity implements Callback<Roster> {
 
   @InjectView(R.id.roster_recycler)RecyclerView mRecycler;
 
@@ -84,6 +85,11 @@ public class MainActivity extends ActionBarActivity implements Callback<Roster> 
   }
 
   @Override public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()){
+      case R.id.action_settings:
+        Intent settingsIntent = new Intent(this, SettingsActivity.class);
+        startActivity(settingsIntent);
+    }
     return super.onOptionsItemSelected(item);
   }
 
