@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="accent">#FFC107</color>
+  <color name="primary">#FF5722</color>
+  <color name="primaryDark">#B2FF5725</color>
+  <color name="fatality_bg">#FF080808</color>
+
+  <color name="selected">#82FF5825</color>
+</resources>

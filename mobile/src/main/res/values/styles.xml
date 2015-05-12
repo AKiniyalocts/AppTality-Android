@@ -1,0 +1,38 @@
+<resources>
+
+  <!-- Base application theme. -->
+  <style name="AppTheme"
+      parent="Theme.AppCompat">
+    <!-- Customize your theme here. -->
+    <item name="colorPrimary">@color/primary</item>
+    <item name="colorAccent">@color/accent</item>
+    <item name="colorPrimaryDark">@color/primaryDark</item>
+  </style>
+
+  <style name="AppTheme.Title.TextView" parent="android:Widget.TextView">
+    <item name="android:textSize">@dimen/abc_text_size_large_material</item>
+    <item name="android:textColor">@color/primary_text_default_material_dark</item>
+    <item name="android:layout_alignParentTop">true</item>
+    <item name="android:layout_alignParentLeft">true</item>
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:fontFamily">sans-serif-condensed</item>
+  </style>
+
+  <style name="AppTheme.Subtitle.TextView" parent="AppTheme.Title.TextView">
+    <item name="android:layout_alignParentTop">false</item>
+    <item name="android:fontFamily">sans-serif-medium</item>
+    <item name="android:textSize">@dimen/abc_text_size_small_material</item>
+    <item name="android:textColor">@color/secondary_text_default_material_dark</item>
+    <item name="android:textAllCaps">true</item>
+  </style>
+
+  <style name="AppTheme.Body.TextView" parent="android:Widget.TextView">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:fontFamily">sans-serif-light</item>
+    <item name="android:textSize">@dimen/abc_text_size_small_material</item>
+    <item name="android:textColor">@color/secondary_text_default_material_dark</item>
+  </style>
+
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:animateLayoutChanges="true"
+    android:paddingTop="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        style="@style/AppTheme.Subtitle.TextView"
+        android:id="@+id/fatality_title"
+        />
+    <TextView
+        style="@style/AppTheme.Body.TextView"
+        android:id="@+id/fatality_loc"
+        android:layout_toRightOf="@+id/fatality_title"
+        />
+    <TextView
+        style="@style/AppTheme.Body.TextView"
+        android:layout_below="@+id/fatality_title"
+        android:textSize="28sp"
+        android:id="@+id/fatality_combo"
+        />
+
+</RelativeLayout>
