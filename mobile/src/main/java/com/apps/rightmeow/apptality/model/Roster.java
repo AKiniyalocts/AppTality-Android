@@ -1,19 +1,17 @@
 package com.apps.rightmeow.apptality.model;
 
 import com.apps.rightmeow.apptality.AppTalityApp;
-import io.realm.Realm;
-import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import java.util.List;
 
 /**
  * Created by AKiniyalocts on 4/21/15.
  */
-public class Roster extends RealmObject{
+public class Roster{
 
   public List<Characters> characters;
 
-  public static class Characters extends RealmObject{
+  public static class Characters{
     @PrimaryKey
     public String name;
     public Fatality[] fatalities;
@@ -27,7 +25,7 @@ public class Roster extends RealmObject{
       return sb.toString();
     }
 
-    public static class Fatality extends RealmObject{
+    public static class Fatality{
       public String name;
       public String code;
       public String location;
