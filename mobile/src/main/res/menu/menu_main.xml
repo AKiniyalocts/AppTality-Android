@@ -9,8 +9,7 @@
       android:id="@+id/action_search"
       android:title="@string/abc_searchview_description_search"/>
     <item
-        android:id="@+id/action_settings"
-        android:title="@string/action_settings"
-        app:showAsAction="never"
-        />
+        android:id="@+id/action_platform"
+        android:title="@string/playstation"
+        app:showAsAction="never"/>
 </menu>

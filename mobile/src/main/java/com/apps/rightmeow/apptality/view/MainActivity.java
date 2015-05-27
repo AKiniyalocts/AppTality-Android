@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -16,6 +17,7 @@ import butterknife.InjectView;
 import com.apps.rightmeow.apptality.AppTalityApp;
 import com.apps.rightmeow.apptality.R;
 import com.apps.rightmeow.apptality.controller.RosterAdapter;
+import com.apps.rightmeow.apptality.helpers.PreferenceHelper;
 import com.apps.rightmeow.apptality.model.Roster;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +48,16 @@ public class MainActivity extends AppCompatActivity implements Callback<Roster> 
   }
 
   private void initRecycler(){
-    mRecycler.setLayoutManager(new LinearLayoutManager(this));
+    // tablet and landscape
+    if(AppTalityApp.isLandscape() && AppTalityApp.isTablet())
+      mRecycler.setLayoutManager(new GridLayoutManager(this, 3));
+
+    // just landscape
+    else if(!AppTalityApp.isTablet() && AppTalityApp.isLandscape())
+      mRecycler.setLayoutManager(new GridLayoutManager(this, 2));
+    // portrait
+    else
+      mRecycler.setLayoutManager(new LinearLayoutManager(this));
   }
 
   @Override public void success(Roster roster, Response response) {
@@ -62,6 +73,13 @@ public class MainActivity extends AppCompatActivity implements Callback<Roster> 
 
   @Override public boolean onCreateOptionsMenu(Menu menu) {
     getMenuInflater().inflate(R.menu.menu_main, menu);
+
+    if(PreferenceHelper.isPlaystation()){
+      menu.findItem(R.id.action_platform).setTitle(getString(R.string.switch_to_xbox));
+    }
+    else
+      menu.findItem(R.id.action_platform).setTitle(getString(R.string.switch_to_playstation));
+
 
     SearchManager searchManager = (SearchManager) getSystemService(
         Context.SEARCH_SERVICE);
@@ -86,9 +104,18 @@ public class MainActivity extends AppCompatActivity implements Callback<Roster> 
 
   @Override public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()){
-      case R.id.action_settings:
-        Intent settingsIntent = new Intent(this, SettingsActivity.class);
-        startActivity(settingsIntent);
+      case R.id.action_platform:
+        if(PreferenceHelper.isPlaystation()) {
+          PreferenceHelper.setPlatformKey(false);
+          item.setTitle(getString(R.string.switch_to_playstation));
+        }
+        else {
+          PreferenceHelper.setPlatformKey(true);
+          item.setTitle(getString(R.string.switch_to_xbox));
+        }
+
+        mRecycler.setAdapter(mAdapter);
+        break;
     }
     return super.onOptionsItemSelected(item);
   }
